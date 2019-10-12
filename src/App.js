@@ -13,6 +13,8 @@ class App extends Component {
 
     this.state = { selectedItem: [], price: 0 }
 
+  }
+
 
 
   onProductSelected = (product) => {
@@ -29,8 +31,10 @@ class App extends Component {
     const deletedPost = Object.assign([], this.state.selectedItem);
     deletedPost.splice(index, 1);
     this.setState({
-      selectedItem: deletedPost
-    })
+      selectedItem: deletedPost,
+     
+      price : this.state.price - parseInt(this.state.selectedItem[index].price)
+    }) 
   }
 
 
@@ -50,11 +54,18 @@ class App extends Component {
     })
 
 
+/*eraseAll =(element) =>
+ { this.setState({
+selectedItem : {}
+ })
+
+ }
+*/
     return;
 
   };
+  
 
- 
   render() {
     console.log(this.state.price)
     return (

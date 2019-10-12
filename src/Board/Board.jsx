@@ -21,6 +21,7 @@ class Board extends Component {
 
 							
 							>Remove It</button>}  </li>)
+							
 
 					})}
 
@@ -30,17 +31,16 @@ class Board extends Component {
 				<div className="orderButtons">
 					<p>Total: $ {this.props.addPrice}.00</p>
 
-						return (<li> {element.name} {element.price}
-							{<button key={element.id} className="removeButton" onClick={() =>
-								this.props.deleteEvent(index)}
-								>X</button>}</li>)
-					})}
 				</div>
 
 				<div className="orderButtons">
 
 					<button className="printCheck">IMPRIMIR CUENTA</button>
-					<button className="closeCheck"> CERRAR CUENTA</button>
+					<button className="closeCheck"
+					// onClick= {() =>
+					//{this.props.eraseAll}
+					//					}
+					> CERRAR CUENTA</button>
 				</div>
 
 			</div>
