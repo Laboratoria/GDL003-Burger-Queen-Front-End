@@ -5,7 +5,7 @@ import './Board.css';
 class Board extends Component {
 
 	render() {
-		
+
 		return (
 			<div className="orderSection">
 
@@ -36,14 +36,13 @@ class Board extends Component {
 				<div className="orderButtons">
 
 					<button className="printCheck">IMPRIMIR CUENTA</button>
-					<button className="closeCheck"
-					// onClick= {() =>
-					//{this.props.eraseAll}
-					//					}
+					
+					<button className="closeCheck" onClick={this.props.eraseAll}								
 					> CERRAR CUENTA</button>
 				</div>
-
+					 
 			</div>
+					 
 		);
 	}
 }

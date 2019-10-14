@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { selectedItem: [], price: 0 }
+    this.state = { selectedItem: [], price: 0, item: [] }
 
   }
 
@@ -19,52 +19,54 @@ class App extends Component {
 
   onProductSelected = (product) => {
 
-    this.setState({ 
-      selectedItem: [...this.state.selectedItem, product], 
-      price: this.state.price + parseInt(product.price) 
-      })
+    this.setState({
+      selectedItem: [...this.state.selectedItem, product],
+      price: this.state.price + parseInt(product.price)
+    })
   }
 
 
-  deleteEvent = (index)=> {
+  deleteEvent = (index) => {
 
     const deletedPost = Object.assign([], this.state.selectedItem);
     deletedPost.splice(index, 1);
     this.setState({
       selectedItem: deletedPost,
-     
-      price : this.state.price - parseInt(this.state.selectedItem[index].price)
-    }) 
+
+      price: this.state.price - parseInt(this.state.selectedItem[index].price)
+    })
   }
 
 
   addPrice = (element) => {
     let suma = 0;
-    
+
     const items = this.state.selectedItem;
 
     for (let index = 0; index < items.length; index++) {
-    
+
       suma += (parseInt(items[index].price));
-     
-    
+
+
     }
     this.setState({
       price: suma
     })
+    // return;
+
+  }
 
 
-/*eraseAll =(element) =>
- { this.setState({
-selectedItem : {}
- })
+  eraseAll = (items) => {
 
- }
-*/
-    return;
 
-  };
-  
+    this.setState({
+      selectedItem: []
+    })
+    alert("Tu orden se ha enviado a cocina")
+  }
+
+
 
   render() {
     console.log(this.state.price)
@@ -82,7 +84,7 @@ selectedItem : {}
             <Table />
           </div>
           <div className="menuList">
-            <Menu onProductSelected={this.onProductSelected}/>
+            <Menu onProductSelected={this.onProductSelected} />
           </div>
           <div className="orderBoard">
 
@@ -93,10 +95,11 @@ selectedItem : {}
 
               addPrice={this.state.price}
 
+              eraseAll={this.eraseAll}
 
             />
 
-           
+
 
           </div>
         </div>
